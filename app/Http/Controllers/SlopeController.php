@@ -55,7 +55,7 @@ class SlopeController extends Controller
         return response()->json(['Slope is updated successfully.', new SlopeResource($slope)]);
     }
 
-    public function delete(SkiSlope $slope){
+    public function destroy(SkiSlope $slope){
         $slope->delete();
 
         return response()->json('Slope is deleted successfully');

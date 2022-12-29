@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\AuthController2;
 use App\Http\Controllers\MountainSlopeController;
 use App\Http\Controllers\SlopeController;
 use App\Http\Controllers\UserController;
@@ -36,9 +37,9 @@ Route::get('users', [UserController::class, 'index']);
 
 Route::get('users/{id}', [UserController::class, 'show']);
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController2::class, 'register']);
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController2::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', function (Request $request) {
@@ -47,7 +48,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     );
     Route::resource('slopes', SlopeController::class)->only(['update', 'store', 'destroy']);
 
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController2::class, 'logout']);
 });
 
 Route::resource('slopes', SlopeController::class)->only(['index']);

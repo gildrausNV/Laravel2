@@ -9,6 +9,8 @@ class SkiSlope extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function Mountain(){
         return $this->belongsTo(Mountain::class);
     }
